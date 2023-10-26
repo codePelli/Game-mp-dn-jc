@@ -11,6 +11,7 @@ public class Juego {
 	private Color[] coloresDisponibles;
 	private Color[] coloresIniciales;
 	private int intentos = 0;
+	Color[] coloresResultado;
 	
 	public Juego(Color[] combinacionSecreta, Color[] coloresDisponibles) {
 		
@@ -80,8 +81,6 @@ public class Juego {
 		int negros = 0;
 		boolean verificar = false;
 		int blancos = 0;
-		Color[] coloresResultado;
-
 		
 		for (int x = 0; arrayIntento.length > x; x++) {
 			
@@ -124,28 +123,52 @@ public class Juego {
 			
 		}
 		
-		return coloresDisponibles;
+		intentos--;
+		ganadoPerdido(negros);
+		return coloresResultado;
 		
 	}
 	
-	public void pintarBoton(JButton[] botones, int seleccionOpcion) {
+	public void ganadoPerdido(int acertados) {
+		
+		if (acertados == 4) {
+			
+			JOptionPane.showMessageDialog(null, "HAS GANADO");	
+
+			
+		} else if (intentos == 0) {
+			
+			JOptionPane.showMessageDialog(null, "PERDISTE HUEVON");	
+			
+		}
+		
+	}
+	
+	public void pintarBoton(JButton[] botones, String seleccionOpcion) {
 		
 		
 		switch (seleccionOpcion) {
 		
-		case 1:
+		case "Disponibles":
 			//Colores disponibles
 			
-
+			for (int x = 0; botones.length > x; x++) {
+				
+				botones[x].setBackground(coloresDisponibles[x]);
+				
+			}
 			
-		case 2:
-			//Combinacion secreta
+			break;
 			
-
-			
-		case 3:
+		case "Resultado":
 			//Combinacion resultado
-
+			
+			for (int x = 0; botones.length > x; x++) {
+				
+				botones[x].setBackground(coloresResultado[x]);
+				
+			}
+			
 			break;
 			
 			default:
