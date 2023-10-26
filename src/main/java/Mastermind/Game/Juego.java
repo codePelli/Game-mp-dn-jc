@@ -151,6 +151,6 @@ public class Juego {
 				JOptionPane.showMessageDialog(null, "Selecciona un nivel");
 		}
 	}
-	}
+	
 	
 }
