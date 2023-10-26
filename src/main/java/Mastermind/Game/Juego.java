@@ -1,6 +1,7 @@
 package Mastermind.Game;
 
 import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -151,6 +152,6 @@ public class Juego {
 				JOptionPane.showMessageDialog(null, "Selecciona un nivel");
 		}
 	}
-	}
-	
 }
+	
+
