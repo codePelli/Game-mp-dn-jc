@@ -38,15 +38,19 @@ public class SeleccionarNivel extends JFrame {
 		
 		//Botones para seleccionar el nivel de dificultad
 		JRadioButton rdbtnprincipante = new JRadioButton("Principiante");
+		rdbtnprincipante.setActionCommand("Principiante");
 		rdbtnprincipante.setSelected(true);
 		rdbtnprincipante.setBounds(61, 30, 109, 23);
 		contentPane.add(rdbtnprincipante);
 		
 		JRadioButton rdbtnMedio = new JRadioButton("Medio");
+		rdbtnMedio.setActionCommand("Medio");
+
 		rdbtnMedio.setBounds(172, 30, 88, 23);
 		contentPane.add(rdbtnMedio);
 		
 		JRadioButton rdbtnAvanzado = new JRadioButton("Avanzado");
+		rdbtnAvanzado.setActionCommand("Avanzado");
 		rdbtnAvanzado.setBounds(262, 30, 109, 23);
 		contentPane.add(rdbtnAvanzado);
 		
@@ -67,9 +71,8 @@ public class SeleccionarNivel extends JFrame {
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				
 				 setVisible(false);
-				 MasterMind game = new MasterMind(); 
+				 MasterMind game = new MasterMind(bgroup.getSelection().getActionCommand()); 
 	             game.setVisible(true); 
 	             
 			}
