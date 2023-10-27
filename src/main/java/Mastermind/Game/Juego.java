@@ -1,6 +1,7 @@
 package Mastermind.Game;
 
 import java.awt.Color;
+import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -12,8 +13,9 @@ public class Juego {
 	private Color[] coloresIniciales;
 
 	private int intentos = 0;
-	Color[] coloresResultado;
+	private Color[] coloresResultado;
 	
+
 	public Juego(String dificultad) {
 		coloresIniciales = new Color[6];
 		coloresIniciales[0] = Color.pink;
@@ -81,7 +83,8 @@ public class Juego {
 		int negros = 0;
 		boolean verificar = false;
 		int blancos = 0;
-		
+		int contador = 0;
+		Color[] coloresAparecidos = new Color[arrayIntento.length];
 		for (int x = 0; arrayIntento.length > x; x++) {
 			
 			if (arrayIntento[x].getBackground() == combinacionSecreta[x]) {
@@ -93,15 +96,23 @@ public class Juego {
 				for (int y = 0; arrayIntento.length > y; y++) {
 					
 					if (arrayIntento[x].getBackground() == combinacionSecreta[y]) {
-						
 						verificar = true;
+						for (int i = 0; i < coloresAparecidos.length; i++) {
+							if(coloresAparecidos[i] == arrayIntento[x].getBackground()) {
+								verificar = false;
+							}
+						}
+						if(verificar) {
+							
+						}
 					}
 				}
 				
 				if (verificar) {
-					
 					blancos ++;
 					verificar = false;
+					coloresAparecidos[contador] = arrayIntento[x].getBackground();
+					contador++;
 				}
 			}
 		}
@@ -163,7 +174,7 @@ public class Juego {
 		case "Resultado":
 			//Combinacion resultado
 			
-			for (int x = 0; botones.length > x; x++) {
+			for (int x = 0; coloresResultado.length > x; x++) {
 				
 				botones[x].setBackground(coloresResultado[x]);
 				
@@ -199,6 +210,9 @@ public class Juego {
 	}
 	public int getContadorColoresDisponibles() {
 		return coloresDisponibles.length;
+	}
+	public Color[] getColoresResultado() {
+		return coloresResultado;
 	}
 }
 	

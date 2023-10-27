@@ -69,4 +69,8 @@ public class Controlador implements ActionListener {
 			
 		}
 	}
+	public void pintarBotonesResultado(JButton[] botones) {
+		juego.pintarBoton(botones,"Resultado");
+	}
+	
 }

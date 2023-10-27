@@ -23,7 +23,8 @@ public class MasterMind extends JFrame {
 
 	private String dificultad;
 	private Controlador controlador;
-
+	JButton[][] resultado;
+	
 	public MasterMind(Controlador controlador) {
 
 		this.controlador = controlador;
@@ -70,7 +71,7 @@ public class MasterMind extends JFrame {
 
 		crearBotonesColoresDisponibles();
 		crearBotonesCombinacionSecreta();
-
+		crearBotonesResultado();
 	}
 
 	public void crearBotonesIntentos() {
@@ -86,6 +87,9 @@ public class MasterMind extends JFrame {
 				intentos[i][j] = btn;
 				contentPane.add(intentos[i][j]);
 				x = x + 30;
+				if(i > 0) {
+					btn.setVisible(false);
+				}
 				btn.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						controlador.pintarBotonIntento(btn);
@@ -110,9 +114,19 @@ public class MasterMind extends JFrame {
 					if(x < comprobar.length -1) {
 						comprobar[x + 1].setVisible(true);
 					}
-					JButton[] row = intentos[x];
+					JButton[] filaIntentos = intentos[x];
+					JButton[] filaResultado = resultado[x];
 					
-					controlador.comprobarIntento(row);
+					
+					for (int k = 0; k < intentos[x+1].length; k++) {
+						intentos[x+1][k].setVisible(true);
+						resultado[x+1][k].setVisible(true);
+					}
+
+					
+					controlador.comprobarIntento(filaIntentos);
+					controlador.pintarBotonesResultado(filaResultado);
+
 				}
 			});
 			
@@ -162,5 +176,30 @@ public class MasterMind extends JFrame {
 
 		}
 	}
+	public void crearBotonesResultado() 
+	{
+		
+		resultado = new JButton[controlador.intentos()][4];
+		
 
+		int y = 15;
+		for(int i = 0; i < resultado.length; i++) 
+		{
+			int x = 300;
+			for (int j = 0; j < resultado[i].length; j++) 
+			{
+				
+				JButton btn = new JButton("");
+				btn.setBounds(x, y, 25, 25);
+				resultado[i][j] = btn;
+				contentPane.add(resultado[i][j]);
+				x = x + 30;
+				if(i > 0) {
+					btn.setVisible(false);
+				}
+
+			}
+			y += 30;
+		}
+	}
 }
