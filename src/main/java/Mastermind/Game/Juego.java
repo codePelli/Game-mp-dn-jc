@@ -22,14 +22,13 @@ public class Juego {
 		coloresIniciales[4] = Color.orange;
 		coloresIniciales[5] = Color.green;
 		seleccionDificultad(dificultad);
-	}
-	
-	public void seleccionDificultad(String dificultad) {
 		
+	}
+	public void seleccionDificultad(String dificultad) {
 		
 		combinacionSecreta = new Color[4];
 		
-		switch (dificultad.toLowerCase()) {
+		switch (dificultad) {
 		
 		case "principiante":
 			//dificultad principiante
@@ -66,7 +65,7 @@ public class Juego {
 		
 	}
 	
-	public void RellenarCombinacionSecreta() {
+	public void combinacionGanadora() {
 		
 		for (int x = 0; combinacionSecreta.length > x; x++) {
 			
@@ -74,7 +73,7 @@ public class Juego {
 		}
 	}
 	
-	public Color[] comprobarIntento(JButton[] arrayIntento) {
+	public int comprobarIntento(JButton[] arrayIntento) {
 		
 		int negros = 0;
 		boolean verificar = false;
@@ -122,23 +121,25 @@ public class Juego {
 		}
 		
 		intentos--;
-		ganadoPerdido(negros);
-		return coloresResultado;
+		return ganadoPerdido(negros);
 		
 	}
 	
-	public void ganadoPerdido(int acertados) {
+	public int ganadoPerdido(int acertados) {
 		
 		if (acertados == 4) {
 			
-			JOptionPane.showMessageDialog(null, "HAS GANADO");	
+			JOptionPane.showMessageDialog(null, "HAS GANADO");
+			return 1;
 
 			
 		} else if (intentos == 0) {
 			
 			JOptionPane.showMessageDialog(null, "PERDISTE HUEVON");	
-			
-		}
+			return 2;
+		} 
+		
+		return 3;
 		
 	}
 	
@@ -173,23 +174,6 @@ public class Juego {
 				JOptionPane.showMessageDialog(null, "Selecciona un nivel");
 		}
 	}
-
-	public Color[] getCombinacionSecreta() {
-		return combinacionSecreta;
-	}
-
-	public Color[] getColoresDisponibles() {
-		return coloresDisponibles;
-	}
-
-	public Color[] getColoresIniciales() {
-		return coloresIniciales;
-	}
-
-	public int getIntentos() {
-		return intentos;
-	}
-	
-	
 }
 	
+
