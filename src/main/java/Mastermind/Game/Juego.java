@@ -12,41 +12,39 @@ public class Juego {
 	private Color[] coloresIniciales;
 	private int intentos = 0;
 	
-	public Juego(Color[] combinacionSecreta, Color[] coloresDisponibles) {
-		
+	public Juego(String dificultad) {
+		coloresIniciales = new Color[6];
 		coloresIniciales[0] = Color.pink;
 		coloresIniciales[1] = Color.black;
 		coloresIniciales[2] = Color.blue;
 		coloresIniciales[3] = Color.red;
 		coloresIniciales[4] = Color.orange;
 		coloresIniciales[5] = Color.green;
-		
-		this.combinacionSecreta = combinacionSecreta;
-		this.coloresDisponibles = coloresDisponibles;
+		seleccionDificultad(dificultad);
 	}
 	
-	public void seleccionDificultad() {
+	public void seleccionDificultad(String dificultad) {
 		
-		int dificultad = 0;
+		
 		combinacionSecreta = new Color[4];
 		
-		switch (dificultad) {
+		switch (dificultad.toLowerCase()) {
 		
-		case 1:
+		case "principiante":
 			//dificultad principiante
 			
 			coloresDisponibles = new Color[4];
 			intentos = 10;
 			break;
 			
-		case 2:
+		case "medio":
 			//dificultad media
 			
 			coloresDisponibles = new Color[6];
 			intentos = 8;
 			break;
 			
-		case 3:
+		case "avanzado":
 			//dificultad avanzado
 			
 			coloresDisponibles = new Color[6];
@@ -67,7 +65,7 @@ public class Juego {
 		
 	}
 	
-	public void combinacionGanadora() {
+	public void RellenarCombinacionSecreta() {
 		
 		for (int x = 0; combinacionSecreta.length > x; x++) {
 			
@@ -152,6 +150,24 @@ public class Juego {
 				JOptionPane.showMessageDialog(null, "Selecciona un nivel");
 		}
 	}
+
+	public Color[] getCombinacionSecreta() {
+		return combinacionSecreta;
+	}
+
+	public Color[] getColoresDisponibles() {
+		return coloresDisponibles;
+	}
+
+	public Color[] getColoresIniciales() {
+		return coloresIniciales;
+	}
+
+	public int getIntentos() {
+		return intentos;
+	}
+	
+	
 }
 	
 
