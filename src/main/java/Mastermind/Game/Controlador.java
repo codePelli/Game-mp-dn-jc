@@ -47,4 +47,10 @@ public class Controlador implements ActionListener {
 	public void getColorSecreta(JButton botonSecreto, String index) {
 		juego.pintarSecreto(botonSecreto, index);
 	}
+	public int getContadorDisponibles(){
+		return juego.getContadorColoresDisponibles();
+	}
+	public void pintarBotonIntento(JButton boton) {
+		juego.cambiarIntentoBackground(boton);
+	}
 }

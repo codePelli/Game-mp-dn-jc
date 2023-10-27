@@ -36,6 +36,7 @@ public class Juego {
 			//dificultad principiante
 			
 			coloresDisponibles = new Color[4];
+			
 			intentos = 10;
 			break;
 			
@@ -175,6 +176,20 @@ public class Juego {
 		}
 	}
 	
+	public void cambiarIntentoBackground(JButton boton) {
+		boolean isColored = false;
+		
+		for (int i = 0; i < coloresDisponibles.length; i++) {
+			if(boton.getBackground() == coloresDisponibles[i] && i != coloresDisponibles.length - 1 && !isColored) {
+				boton.setBackground(coloresDisponibles[i+1]);
+				isColored = true;
+			}
+		}
+		if(!isColored) {
+			boton.setBackground(coloresDisponibles[0]);
+		}
+	}
+	
 	public void pintarSecreto(JButton secreto, String index) {
 		secreto.setBackground(combinacionSecreta[Integer.parseInt(index)]);
 	}
@@ -182,7 +197,9 @@ public class Juego {
 	public int getIntentos() {
 		return intentos;
 	}
-	
+	public int getContadorColoresDisponibles() {
+		return coloresDisponibles.length;
+	}
 }
 	
 

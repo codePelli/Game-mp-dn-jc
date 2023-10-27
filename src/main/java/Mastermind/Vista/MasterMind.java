@@ -86,6 +86,11 @@ public class MasterMind extends JFrame {
 				intentos[i][j] = btn;
 				contentPane.add(intentos[i][j]);
 				x = x + 30;
+				btn.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						controlador.pintarBotonIntento(btn);
+					}
+				});
 			}
 			JButton botonComprobar = new JButton("Comprobar");
 			botonComprobar.setBounds(175, y, 115, 25);
@@ -93,11 +98,12 @@ public class MasterMind extends JFrame {
 			contentPane.add(comprobar[i]);
 			y += 30;
 		}
+
 	}
 
 	public void crearBotonesColoresDisponibles() 
 	{
-		JButton[] dispo = new JButton[4];
+		JButton[] dispo = new JButton[controlador.getContadorDisponibles()];
 		int y = 65;
 		int x = 513;
 		for(int i = 0; i < dispo.length; i++) 
