@@ -21,13 +21,7 @@ public class SeleccionarNivel extends JFrame {
 	private JPanel contentPane;
 	
 	public ButtonGroup bgroup;
-	
-	public MasterMind getGame() {
-		return game;
-	}
-
-	private MasterMind game;
-	
+	// Constructor que a raiz de un controlador nos crea una pantalla para seleccionar el novel del juego
 	public SeleccionarNivel(Controlador controlador) {
 		
 		setTitle("Seleccionar nivel");
@@ -68,7 +62,7 @@ public class SeleccionarNivel extends JFrame {
 		btnAceptar.setBounds(103, 71, 88, 23);
 		contentPane.add(btnAceptar);
 		
-		//Acepta el nivel de dificultad 
+		//Acepta el nivel de dificultad desde action listener del controlador
 		btnAceptar.addActionListener(controlador);
 		
 		JButton btnCancelar = new JButton("Cancelar");

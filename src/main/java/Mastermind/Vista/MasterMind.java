@@ -24,7 +24,7 @@ public class MasterMind extends JFrame {
 	private String dificultad;
 	private Controlador controlador;
 	JButton[][] resultado;
-	
+	//Creamos constructor a raiz de un controlador
 	public MasterMind(Controlador controlador) {
 
 		this.controlador = controlador;
@@ -45,10 +45,6 @@ public class MasterMind extends JFrame {
 		lbldispo_1.setBounds(512, 178, 221, 14);
 		contentPane.add(lbldispo_1);
 
-		//		JButton btnComprobarIntentos = new JButton("Comprobar");
-		//		btnComprobarIntentos.setBounds(188, 285, 115, 23);
-		//		contentPane.add(btnComprobarIntentos);
-
 		JButton btnAtras = new JButton("Atras");
 		btnAtras.setBounds(512, 285, 89, 23);
 		contentPane.add(btnAtras);
@@ -61,9 +57,7 @@ public class MasterMind extends JFrame {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 
-				setVisible(false);
-				SeleccionarNivel niveles = new SeleccionarNivel(controlador); 
-				niveles.setVisible(true); 
+				controlador.reiniciarJuego();
 
 			}
 		});
@@ -73,7 +67,7 @@ public class MasterMind extends JFrame {
 		crearBotonesCombinacionSecreta();
 		crearBotonesResultado();
 	}
-
+	//Metodo para crear los botones de intentos
 	public void crearBotonesIntentos() {
 
 		JButton[][] intentos = new JButton[controlador.intentos()][4];
@@ -97,10 +91,10 @@ public class MasterMind extends JFrame {
 				});
 			}
 			JButton botonComprobar = new JButton("Comprobar");
-			
+
 			botonComprobar.setActionCommand(i+"");
 			if (i != 0) {
-				
+
 				botonComprobar.setVisible(false);
 			}
 			botonComprobar.setBounds(175, y, 115, 25);
@@ -109,27 +103,32 @@ public class MasterMind extends JFrame {
 			y += 30;
 			botonComprobar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					//Cogemos el index de la array guardada en el botón
 					int x = Integer.parseInt(botonComprobar.getActionCommand());
 					botonComprobar.setVisible(false);
+					//Dejamos solo visible el primer botón
 					if(x < comprobar.length -1) {
 						comprobar[x + 1].setVisible(true);
 					}
 					JButton[] filaIntentos = intentos[x];
 					JButton[] filaResultado = resultado[x];
-					
-					
-					for (int k = 0; k < intentos[x+1].length; k++) {
-						intentos[x+1][k].setVisible(true);
-						resultado[x+1][k].setVisible(true);
-					}
 
-					
+					//Dejamos visible solo la primera linea de de intentos y de resultados
+					if(x < intentos.length - 1) {
+						for (int k = 0; k < intentos[x+1].length; k++) {
+
+							intentos[x+1][k].setVisible(true);
+							resultado[x+1][k].setVisible(true);
+
+						}
+					}
+					//llamamos al controlador para comprobar el intento y para pintar los botones
 					controlador.comprobarIntento(filaIntentos);
 					controlador.pintarBotonesResultado(filaResultado);
 
 				}
 			});
-			
+
 		}
 
 	}
@@ -149,6 +148,7 @@ public class MasterMind extends JFrame {
 
 
 		}
+		// pinta los colores disponibles
 		controlador.getColoresDisponibles(dispo, "Disponibles");
 	}
 
@@ -170,7 +170,6 @@ public class MasterMind extends JFrame {
 			btn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					controlador.getColorSecreta(btn, e.getActionCommand());
-
 				}
 			});
 
@@ -178,9 +177,9 @@ public class MasterMind extends JFrame {
 	}
 	public void crearBotonesResultado() 
 	{
-		
+
 		resultado = new JButton[controlador.intentos()][4];
-		
+
 
 		int y = 15;
 		for(int i = 0; i < resultado.length; i++) 
@@ -188,7 +187,7 @@ public class MasterMind extends JFrame {
 			int x = 300;
 			for (int j = 0; j < resultado[i].length; j++) 
 			{
-				
+
 				JButton btn = new JButton("");
 				btn.setBounds(x, y, 25, 25);
 				resultado[i][j] = btn;

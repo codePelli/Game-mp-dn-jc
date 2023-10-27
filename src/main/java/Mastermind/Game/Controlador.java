@@ -17,9 +17,12 @@ public class Controlador implements ActionListener {
     private SeleccionarNivel seleccionarLevel;
     
     public void reiniciarJuego() {
-    	
+  
     	seleccionarLevel = new SeleccionarNivel(this);
 		seleccionarLevel.setVisible(true);
+		if(mastermind != null) {
+			mastermind.setVisible(false);
+		}
     }
     
     public int intentos() {
@@ -32,9 +35,11 @@ public class Controlador implements ActionListener {
     	
     }
 
+   
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		//Una vez seleccionada la dificultad se le pasa al juego y se pone en invisible la pestaña seleccionar nivel
+		// y se crea el maserMind que es el visual de juego en general
     	juego = new Juego(seleccionarLevel.bgroup.getSelection().getActionCommand());
 		seleccionarLevel.setVisible(false);
 		mastermind = new MasterMind(this); 

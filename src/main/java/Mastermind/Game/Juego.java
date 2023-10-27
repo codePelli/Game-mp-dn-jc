@@ -15,7 +15,7 @@ public class Juego {
 	private int intentos = 0;
 	private Color[] coloresResultado;
 	
-
+	//Cuando creamos el juego le pasamos la dificultad para guardarnos los intentos y los colores disponibles
 	public Juego(String dificultad) {
 		coloresIniciales = new Color[6];
 		coloresIniciales[0] = Color.pink;
@@ -26,8 +26,9 @@ public class Juego {
 		coloresIniciales[5] = Color.green;
 		seleccionDificultad(dificultad);
 		rellenarColores();
-		combinacionGanadora();
+		rellenarCombinacionSecreta();
 	}
+	//Condicional para guardar dificultad
 	public void seleccionDificultad(String dificultad) {
 		
 		combinacionSecreta = new Color[4];
@@ -70,20 +71,21 @@ public class Juego {
 		
 	}
 	
-	public void combinacionGanadora() {
+	public void rellenarCombinacionSecreta() {
 		
 		for (int x = 0; combinacionSecreta.length > x; x++) {
 			
 			combinacionSecreta[x] = coloresDisponibles[(int) (Math.random()*coloresDisponibles.length)];
 		}
 	}
-	
+	// Logica para comprobar el intento que  nos pasan con una array de botones
 	public int comprobarIntento(JButton[] arrayIntento) {
 		
 		int negros = 0;
 		boolean verificar = false;
 		int blancos = 0;
 		int contador = 0;
+		//Creamos array para saber que colores han aparecido
 		Color[] coloresAparecidos = new Color[arrayIntento.length];
 		for (int x = 0; arrayIntento.length > x; x++) {
 			
@@ -186,7 +188,7 @@ public class Juego {
 				JOptionPane.showMessageDialog(null, "Selecciona un nivel");
 		}
 	}
-	
+	// Cambiar color del intento cada vez que se haga click
 	public void cambiarIntentoBackground(JButton boton) {
 		boolean isColored = false;
 		
@@ -200,7 +202,7 @@ public class Juego {
 			boton.setBackground(coloresDisponibles[0]);
 		}
 	}
-	
+	// pinta el secreto al que le des click
 	public void pintarSecreto(JButton secreto, String index) {
 		secreto.setBackground(combinacionSecreta[Integer.parseInt(index)]);
 	}
