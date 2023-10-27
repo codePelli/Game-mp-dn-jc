@@ -9,7 +9,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import Mastermind.Game.Juego;
 import javax.swing.JButton;
 
 public class MasterMind extends JFrame {
@@ -21,11 +21,12 @@ public class MasterMind extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MasterMind() 
+	Juego juego;
+	
+	public MasterMind(String dificultad) 
 	{
-		
+		juego = new Juego(dificultad);
 		setTitle("Master Mind Game");
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 400);
 		contentPane = new JPanel();
@@ -42,13 +43,15 @@ public class MasterMind extends JFrame {
 		lbldispo_1.setBounds(512, 178, 221, 14);
 		contentPane.add(lbldispo_1);
 		
-		JButton btnComprobarIntentos = new JButton("Comprobar");
-		btnComprobarIntentos.setBounds(188, 285, 115, 23);
-		contentPane.add(btnComprobarIntentos);
+//		JButton btnComprobarIntentos = new JButton("Comprobar");
+//		btnComprobarIntentos.setBounds(188, 285, 115, 23);
+//		contentPane.add(btnComprobarIntentos);
 		
 		JButton btnAtras = new JButton("Atras");
 		btnAtras.setBounds(512, 285, 89, 23);
 		contentPane.add(btnAtras);
+		
+		crearBotonesIntentos();
 		
 		//Acepta el nivel de dificultad 
 		btnAtras.addActionListener(new ActionListener() 
@@ -62,27 +65,6 @@ public class MasterMind extends JFrame {
 			             
 			}
 		});
-		
-		
-		JButton btn1ColorIntento = new JButton("");
-		btn1ColorIntento.setBounds(56, 285, 23, 23);
-		contentPane.add(btn1ColorIntento);
-		
-		JButton btn2ColorIntento = new JButton("");
-		btn2ColorIntento.setBounds(89, 285, 23, 23);
-		contentPane.add(btn2ColorIntento);
-		
-		JButton btn3ColorIntento = new JButton("");
-		btn3ColorIntento.setBounds(122, 285, 23, 23);
-		contentPane.add(btn3ColorIntento);
-		
-		JButton btn4ColorIntento = new JButton("");
-		btn4ColorIntento.setBounds(155, 285, 23, 23);
-		contentPane.add(btn4ColorIntento);
-		
-		JButton btn1Dispo = new JButton("");
-		btn1Dispo.setBounds(512, 71, 23, 23);
-		contentPane.add(btn1Dispo);
 		
 		JButton btn2Dispo = new JButton("");
 		btn2Dispo.setBounds(545, 71, 23, 23);
@@ -143,85 +125,6 @@ public class MasterMind extends JFrame {
 		btn4CombinacionSecreta.setBounds(611, 203, 23, 23);
 		contentPane.add(btn4CombinacionSecreta);
 		
-		JButton btn1ColorIntento_1 = new JButton("");
-		btn1ColorIntento_1.setBounds(56, 251, 23, 23);
-		contentPane.add(btn1ColorIntento_1);
-		
-		JButton btn2ColorIntento_1 = new JButton("");
-		btn2ColorIntento_1.setBounds(89, 251, 23, 23);
-		contentPane.add(btn2ColorIntento_1);
-		
-		JButton btn3ColorIntento_1 = new JButton("");
-		btn3ColorIntento_1.setBounds(122, 251, 23, 23);
-		contentPane.add(btn3ColorIntento_1);
-		
-		JButton btn4ColorIntento_1 = new JButton("");
-		btn4ColorIntento_1.setBounds(155, 251, 23, 23);
-		contentPane.add(btn4ColorIntento_1);
-		
-		JButton btn1ColorIntento_2 = new JButton("");
-		btn1ColorIntento_2.setBounds(56, 217, 23, 23);
-		contentPane.add(btn1ColorIntento_2);
-		
-		JButton btn2ColorIntento_2 = new JButton("");
-		btn2ColorIntento_2.setBounds(89, 217, 23, 23);
-		contentPane.add(btn2ColorIntento_2);
-		
-		JButton btn3ColorIntento_2 = new JButton("");
-		btn3ColorIntento_2.setBounds(122, 217, 23, 23);
-		contentPane.add(btn3ColorIntento_2);
-		
-		JButton btn4ColorIntento_2 = new JButton("");
-		btn4ColorIntento_2.setBounds(155, 217, 23, 23);
-		contentPane.add(btn4ColorIntento_2);
-		
-		JButton btn1ColorIntento_3 = new JButton("");
-		btn1ColorIntento_3.setBounds(56, 183, 23, 23);
-		contentPane.add(btn1ColorIntento_3);
-		
-		JButton btn2ColorIntento_3 = new JButton("");
-		btn2ColorIntento_3.setBounds(89, 183, 23, 23);
-		contentPane.add(btn2ColorIntento_3);
-		
-		JButton btn3ColorIntento_3 = new JButton("");
-		btn3ColorIntento_3.setBounds(122, 183, 23, 23);
-		contentPane.add(btn3ColorIntento_3);
-		
-		JButton btn4ColorIntento_3 = new JButton("");
-		btn4ColorIntento_3.setBounds(155, 183, 23, 23);
-		contentPane.add(btn4ColorIntento_3);
-		
-		JButton btn1ColorIntento_4 = new JButton("");
-		btn1ColorIntento_4.setBounds(56, 149, 23, 23);
-		contentPane.add(btn1ColorIntento_4);
-		
-		JButton btn2ColorIntento_4 = new JButton("");
-		btn2ColorIntento_4.setBounds(89, 149, 23, 23);
-		contentPane.add(btn2ColorIntento_4);
-		
-		JButton btn3ColorIntento_4 = new JButton("");
-		btn3ColorIntento_4.setBounds(122, 149, 23, 23);
-		contentPane.add(btn3ColorIntento_4);
-		
-		JButton btn4ColorIntento_4 = new JButton("");
-		btn4ColorIntento_4.setBounds(155, 149, 23, 23);
-		contentPane.add(btn4ColorIntento_4);
-		
-		JButton btn1ColorIntento_5 = new JButton("");
-		btn1ColorIntento_5.setBounds(56, 115, 23, 23);
-		contentPane.add(btn1ColorIntento_5);
-		
-		JButton btn2ColorIntento_5 = new JButton("");
-		btn2ColorIntento_5.setBounds(89, 115, 23, 23);
-		contentPane.add(btn2ColorIntento_5);
-		
-		JButton btn3ColorIntento_5 = new JButton("");
-		btn3ColorIntento_5.setBounds(122, 115, 23, 23);
-		contentPane.add(btn3ColorIntento_5);
-		
-		JButton btn4ColorIntento_5 = new JButton("");
-		btn4ColorIntento_5.setBounds(155, 115, 23, 23);
-		contentPane.add(btn4ColorIntento_5);
 		btn4CombinacionSecreta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // Generar un color aleatorio
@@ -230,5 +133,26 @@ public class MasterMind extends JFrame {
             }
         });
 		
+	}
+	
+	public void crearBotonesIntentos() {
+		JButton[][] intentos = new JButton[juego.getIntentos()][4];
+		JButton[] comprobar = new JButton[juego.getIntentos()];
+		int y = 15;
+		for(int i = 0; i < intentos.length; i++) {
+			int x = 55;
+			for (int j = 0; j < intentos[i].length; j++) {
+				JButton btn = new JButton("");
+				btn.setBounds(x, y, 25, 25);
+				intentos[i][j] = btn;
+				contentPane.add(intentos[i][j]);
+				x = x + 30;
+			}
+			JButton botonComprobar = new JButton("Comprobar");
+			botonComprobar.setBounds(175, y, 115, 25);
+			comprobar[i] = botonComprobar;
+			contentPane.add(comprobar[i]);
+			y += 30;
+		}
 	}
 }
