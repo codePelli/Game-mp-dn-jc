@@ -1,4 +1,6 @@
 package Mastermind.Game;
+import Mastermind.Vista.MasterMind;
+import Mastermind.Vista.SeleccionarNivel;
 
 /**
  * Hello world!
@@ -6,8 +8,20 @@ package Mastermind.Game;
  */
 public class MainApp 
 {
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+	
+    private Juego juego;
+    private MasterMind mastermind;
+    private SeleccionarNivel seleccionarLevel;
+    
+    public static void main( String[] args ){
+
+        
+    	
+    }
+    
+    public void reiniciarJuego() {
+    	
+    	seleccionarLevel = new SeleccionarNivel();
+    	juego = new Juego();
     }
 }
