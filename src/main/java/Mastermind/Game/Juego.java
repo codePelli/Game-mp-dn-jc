@@ -23,13 +23,14 @@ public class Juego {
 		coloresIniciales[4] = Color.orange;
 		coloresIniciales[5] = Color.green;
 		seleccionDificultad(dificultad);
-		
+		rellenarColores();
+		combinacionGanadora();
 	}
 	public void seleccionDificultad(String dificultad) {
 		
 		combinacionSecreta = new Color[4];
 		
-		switch (dificultad) {
+		switch (dificultad.toLowerCase()) {
 		
 		case "principiante":
 			//dificultad principiante
@@ -153,9 +154,7 @@ public class Juego {
 			//Colores disponibles
 			
 			for (int x = 0; botones.length > x; x++) {
-				
 				botones[x].setBackground(coloresDisponibles[x]);
-				
 			}
 			
 			break;
@@ -174,6 +173,10 @@ public class Juego {
 			default:
 				JOptionPane.showMessageDialog(null, "Selecciona un nivel");
 		}
+	}
+	
+	public void pintarSecreto(JButton secreto, String index) {
+		secreto.setBackground(combinacionSecreta[Integer.parseInt(index)]);
 	}
 	
 	public int getIntentos() {

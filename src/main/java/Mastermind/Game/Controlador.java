@@ -1,7 +1,10 @@
 package Mastermind.Game;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 
 import Mastermind.Vista.MasterMind;
 import Mastermind.Vista.SeleccionarNivel;
@@ -36,5 +39,12 @@ public class Controlador implements ActionListener {
 		mastermind = new MasterMind(this); 
 	    mastermind.setVisible(true); 
 
+	}
+	
+	public void getColoresDisponibles(JButton[] botones, String tipo) {
+		juego.pintarBoton(botones, tipo);
+	}
+	public void getColorSecreta(JButton botonSecreto, String index) {
+		juego.pintarSecreto(botonSecreto, index);
 	}
 }
