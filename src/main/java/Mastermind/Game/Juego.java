@@ -71,7 +71,7 @@ public class Juego {
 		
 		for (int x = 0; combinacionSecreta.length > x; x++) {
 			
-			combinacionSecreta[x] = coloresDisponibles[x];
+			combinacionSecreta[x] = coloresDisponibles[(int) (Math.random()*coloresDisponibles.length)];
 		}
 	}
 	
@@ -182,6 +182,7 @@ public class Juego {
 	public int getIntentos() {
 		return intentos;
 	}
+	
 }
 	
 
