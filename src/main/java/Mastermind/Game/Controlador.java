@@ -16,6 +16,7 @@ public class Controlador implements ActionListener {
     private MasterMind mastermind;
     private SeleccionarNivel seleccionarLevel;
     
+    //Método para iniciar y reiniciar el juego
     public void reiniciarJuego() {
   
     	seleccionarLevel = new SeleccionarNivel(this);
@@ -30,11 +31,6 @@ public class Controlador implements ActionListener {
 		return juego.getIntentos();
     	
     }
-    
-    public void clickDificultad() {
-    	
-    }
-
    
 	@Override
 	public void actionPerformed(ActionEvent e) {
