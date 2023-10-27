@@ -10,7 +10,9 @@ public class Juego {
 	private Color[] combinacionSecreta;
 	private Color[] coloresDisponibles;
 	private Color[] coloresIniciales;
+
 	private int intentos = 0;
+	Color[] coloresResultado;
 	
 	public Juego(String dificultad) {
 		coloresIniciales = new Color[6];
@@ -21,14 +23,13 @@ public class Juego {
 		coloresIniciales[4] = Color.orange;
 		coloresIniciales[5] = Color.green;
 		seleccionDificultad(dificultad);
-	}
-	
-	public void seleccionDificultad(String dificultad) {
 		
+	}
+	public void seleccionDificultad(String dificultad) {
 		
 		combinacionSecreta = new Color[4];
 		
-		switch (dificultad.toLowerCase()) {
+		switch (dificultad) {
 		
 		case "principiante":
 			//dificultad principiante
@@ -65,7 +66,7 @@ public class Juego {
 		
 	}
 	
-	public void RellenarCombinacionSecreta() {
+	public void combinacionGanadora() {
 		
 		for (int x = 0; combinacionSecreta.length > x; x++) {
 			
@@ -73,13 +74,11 @@ public class Juego {
 		}
 	}
 	
-	public Color[] comprobarIntento(JButton[] arrayIntento) {
+	public int comprobarIntento(JButton[] arrayIntento) {
 		
 		int negros = 0;
 		boolean verificar = false;
 		int blancos = 0;
-		Color[] coloresResultado;
-
 		
 		for (int x = 0; arrayIntento.length > x; x++) {
 			
@@ -122,52 +121,64 @@ public class Juego {
 			
 		}
 		
-		return coloresDisponibles;
+		intentos--;
+		return ganadoPerdido(negros);
 		
 	}
 	
-	public void pintarBoton(JButton[] botones, int seleccionOpcion) {
+	public int ganadoPerdido(int acertados) {
+		
+		if (acertados == 4) {
+			
+			JOptionPane.showMessageDialog(null, "HAS GANADO");
+			return 1;
+
+			
+		} else if (intentos == 0) {
+			
+			JOptionPane.showMessageDialog(null, "PERDISTE HUEVON");	
+			return 2;
+		} 
+		
+		return 3;
+		
+	}
+	
+	public void pintarBoton(JButton[] botones, String seleccionOpcion) {
 		
 		
 		switch (seleccionOpcion) {
 		
-		case 1:
+		case "Disponibles":
 			//Colores disponibles
 			
-
+			for (int x = 0; botones.length > x; x++) {
+				
+				botones[x].setBackground(coloresDisponibles[x]);
+				
+			}
 			
-		case 2:
-			//Combinacion secreta
+			break;
 			
-
-			
-		case 3:
+		case "Resultado":
 			//Combinacion resultado
-
+			
+			for (int x = 0; botones.length > x; x++) {
+				
+				botones[x].setBackground(coloresResultado[x]);
+				
+			}
+			
 			break;
 			
 			default:
 				JOptionPane.showMessageDialog(null, "Selecciona un nivel");
 		}
 	}
-
-	public Color[] getCombinacionSecreta() {
-		return combinacionSecreta;
-	}
-
-	public Color[] getColoresDisponibles() {
-		return coloresDisponibles;
-	}
-
-	public Color[] getColoresIniciales() {
-		return coloresIniciales;
-	}
-
+	
 	public int getIntentos() {
 		return intentos;
 	}
-	
-	
 }
 	
 
