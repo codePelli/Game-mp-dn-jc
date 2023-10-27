@@ -3,6 +3,10 @@ package Mastermind.Vista;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Mastermind.Game.Controlador;
+import Mastermind.Game.MainApp;
+
 import javax.swing.JRadioButton;
 
 import java.awt.event.ActionEvent;
@@ -15,18 +19,18 @@ public class SeleccionarNivel extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-
 	
+	public ButtonGroup bgroup;
+	
+	public MasterMind getGame() {
+		return game;
+	}
 
-	/**
-	 * Create the frame.
-	 */
-	public SeleccionarNivel() 
-	{
-		
+	private MasterMind game;
+	
+	public SeleccionarNivel(Controlador controlador) {
 		
 		setTitle("Seleccionar nivel");
-		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 413, 156);
@@ -55,28 +59,17 @@ public class SeleccionarNivel extends JFrame {
 		contentPane.add(rdbtnAvanzado);
 		
 		//Agrupamos las 3 opciones
-		ButtonGroup bgroup = new ButtonGroup();
+		bgroup = new ButtonGroup();
 		bgroup.add(rdbtnprincipante);
 		bgroup.add(rdbtnMedio);
 		bgroup.add(rdbtnAvanzado);
-		
-		
 		
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.setBounds(103, 71, 88, 23);
 		contentPane.add(btnAceptar);
 		
 		//Acepta el nivel de dificultad 
-		btnAceptar.addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent arg0) 
-			{
-				 setVisible(false);
-				 MasterMind game = new MasterMind(bgroup.getSelection().getActionCommand()); 
-	             game.setVisible(true); 
-	             
-			}
-		});
+		btnAceptar.addActionListener(controlador);
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.setBounds(217, 71, 88, 23);

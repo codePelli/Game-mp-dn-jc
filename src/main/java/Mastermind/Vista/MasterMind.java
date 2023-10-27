@@ -9,23 +9,25 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import Mastermind.Game.Controlador;
 import Mastermind.Game.Juego;
+import Mastermind.Game.MainApp;
+
 import javax.swing.JButton;
 
 public class MasterMind extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-
-
-	/**
-	 * Create the frame.
-	 */
-	Juego juego;
 	
-	public MasterMind(String dificultad) 
-	{
-		juego = new Juego(dificultad);
+	private String dificultad;
+	private Controlador controlador;
+    
+	public MasterMind(Controlador controlador) {
+		
+		this.controlador = controlador;
+		this.dificultad = dificultad;
 		setTitle("Master Mind Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 400);
@@ -60,7 +62,7 @@ public class MasterMind extends JFrame {
 			{
 						
 				setVisible(false);
-				SeleccionarNivel niveles = new SeleccionarNivel(); 
+				SeleccionarNivel niveles = new SeleccionarNivel(controlador); 
 			    niveles.setVisible(true); 
 			             
 			}
@@ -136,8 +138,9 @@ public class MasterMind extends JFrame {
 	}
 	
 	public void crearBotonesIntentos() {
-		JButton[][] intentos = new JButton[juego.getIntentos()][4];
-		JButton[] comprobar = new JButton[juego.getIntentos()];
+		
+		JButton[][] intentos = new JButton[controlador.intentos()][4];
+		JButton[] comprobar = new JButton[controlador.intentos()];
 		int y = 15;
 		for(int i = 0; i < intentos.length; i++) {
 			int x = 55;
@@ -154,5 +157,9 @@ public class MasterMind extends JFrame {
 			contentPane.add(comprobar[i]);
 			y += 30;
 		}
+	}
+	
+	public String getDificultad() {
+		return dificultad;
 	}
 }

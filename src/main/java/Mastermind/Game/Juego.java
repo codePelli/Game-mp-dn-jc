@@ -10,6 +10,7 @@ public class Juego {
 	private Color[] combinacionSecreta;
 	private Color[] coloresDisponibles;
 	private Color[] coloresIniciales;
+
 	private int intentos = 0;
 	Color[] coloresResultado;
 	
@@ -173,6 +174,10 @@ public class Juego {
 			default:
 				JOptionPane.showMessageDialog(null, "Selecciona un nivel");
 		}
+	}
+	
+	public int getIntentos() {
+		return intentos;
 	}
 }
 	
