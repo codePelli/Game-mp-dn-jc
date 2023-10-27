@@ -93,10 +93,29 @@ public class MasterMind extends JFrame {
 				});
 			}
 			JButton botonComprobar = new JButton("Comprobar");
+			
+			botonComprobar.setActionCommand(i+"");
+			if (i != 0) {
+				
+				botonComprobar.setVisible(false);
+			}
 			botonComprobar.setBounds(175, y, 115, 25);
 			comprobar[i] = botonComprobar;
 			contentPane.add(comprobar[i]);
 			y += 30;
+			botonComprobar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					int x = Integer.parseInt(botonComprobar.getActionCommand());
+					botonComprobar.setVisible(false);
+					if(x < comprobar.length -1) {
+						comprobar[x + 1].setVisible(true);
+					}
+					JButton[] row = intentos[x];
+					
+					controlador.comprobarIntento(row);
+				}
+			});
+			
 		}
 
 	}

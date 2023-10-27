@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import Mastermind.Vista.MasterMind;
 import Mastermind.Vista.SeleccionarNivel;
@@ -52,5 +53,20 @@ public class Controlador implements ActionListener {
 	}
 	public void pintarBotonIntento(JButton boton) {
 		juego.cambiarIntentoBackground(boton);
+	}
+
+	public void comprobarIntento(JButton[] arrayIntento) {
+		
+		int tirada = juego.comprobarIntento(arrayIntento);
+
+		if (tirada == 1) {
+			
+			JOptionPane.showMessageDialog(mastermind, "¡Has ganado!");
+			
+		} else if (tirada == 2) {
+			
+			JOptionPane.showMessageDialog(mastermind, "¡Has perdido!");
+			
+		}
 	}
 }

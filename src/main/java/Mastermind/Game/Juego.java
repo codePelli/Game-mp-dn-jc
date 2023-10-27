@@ -108,6 +108,8 @@ public class Juego {
 		
 		coloresResultado = new Color[negros+blancos];
 		
+		int copiaNegro = negros;
+		
 		for (int x = 0; coloresResultado.length > x; x++) {
 			
 			if (negros > 0) {
@@ -124,7 +126,7 @@ public class Juego {
 		}
 		
 		intentos--;
-		return ganadoPerdido(negros);
+		return ganadoPerdido(copiaNegro);
 		
 	}
 	
@@ -132,13 +134,11 @@ public class Juego {
 		
 		if (acertados == 4) {
 			
-			JOptionPane.showMessageDialog(null, "HAS GANADO");
 			return 1;
 
 			
 		} else if (intentos == 0) {
 			
-			JOptionPane.showMessageDialog(null, "PERDISTE HUEVON");	
 			return 2;
 		} 
 		
