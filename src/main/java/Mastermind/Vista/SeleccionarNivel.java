@@ -1,6 +1,7 @@
 package Mastermind.Vista;
 
 import javax.swing.JFrame;
+
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JRadioButton;
@@ -17,16 +18,12 @@ public class SeleccionarNivel extends JFrame {
 	private JPanel contentPane;
 
 	
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public SeleccionarNivel() 
 	{
 		
 		
 		setTitle("Seleccionar nivel");
-		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 413, 156);
