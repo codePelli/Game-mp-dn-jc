@@ -10,20 +10,12 @@ public class Juego {
 	
 	private Color[] combinacionSecreta;
 	private Color[] coloresDisponibles;
-	private Color[] coloresIniciales;
 
 	private int intentos = 0;
 	private Color[] coloresResultado;
 	
 	//Cuando creamos el juego le pasamos la dificultad para guardarnos los intentos y los colores disponibles
 	public Juego(String dificultad) {
-		coloresIniciales = new Color[6];
-		coloresIniciales[0] = Color.pink;
-		coloresIniciales[1] = Color.black;
-		coloresIniciales[2] = Color.blue;
-		coloresIniciales[3] = Color.red;
-		coloresIniciales[4] = Color.orange;
-		coloresIniciales[5] = Color.green;
 		seleccionDificultad(dificultad);
 		rellenarColores();
 		rellenarCombinacionSecreta();
@@ -66,7 +58,7 @@ public class Juego {
 		
 		for (int x = 0; coloresDisponibles.length > x; x++) {
 			
-			coloresDisponibles[x] = coloresIniciales [x];
+			coloresDisponibles[x] = new Color((int)(Math.random() * 0x1000000));
 		}
 		
 	}
