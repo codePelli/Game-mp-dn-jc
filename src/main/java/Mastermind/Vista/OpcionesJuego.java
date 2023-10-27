@@ -22,9 +22,9 @@ public class OpcionesJuego extends JFrame {
 	Juego juego;
 	private Color selectedColor;
 
-	public OpcionesJuego() {
+	public OpcionesJuego(Juego juego) {
 		
-		
+		this.juego = juego;
 		setTitle("Opciones del juego");
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

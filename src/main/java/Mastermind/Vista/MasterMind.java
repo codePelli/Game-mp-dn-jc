@@ -135,21 +135,21 @@ public class MasterMind extends JFrame {
 				
 				JButton botonintento = new JButton("");
 				botonintento.setBounds(x, y, 25, 25);
-				intentos[i][j] = botonintento;
-				contentPane.add(intentos[i][j]);
-				x = x + 30;
 				
-				botonintento.addActionListener(new ActionListener() 
+				intentos[i][j] = botonintento;
+				x = x + 30;
+				intentos[i][j].addActionListener(new ActionListener() 
 				{
 					public void actionPerformed(ActionEvent arg0) 
 					{
 										
 						setVisible(false);
-						OpcionesJuego colores = new OpcionesJuego(); 
+						OpcionesJuego colores = new OpcionesJuego(juego); 
 						colores.setVisible(true); 
 							             
 					}
 				});
+				contentPane.add(intentos[i][j]);
 
 			}
 			
