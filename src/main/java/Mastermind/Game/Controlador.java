@@ -63,11 +63,11 @@ public class Controlador implements ActionListener {
 		if (tirada == 1) {
 			
 			JOptionPane.showMessageDialog(mastermind, "¡Has ganado!");
+			reiniciarJuego();
 			
 		} else if (tirada == 2) {
 			
 			JOptionPane.showMessageDialog(mastermind, "¡Has perdido!");
-			
 		}
 	}
 	public void pintarBotonesResultado(JButton[] botones) {
