@@ -84,6 +84,8 @@ public class Juego {
 			if (arrayIntento[x].getBackground() == combinacionSecreta[x]) {
 				
 				negros ++;
+				coloresAparecidos[contador] = combinacionSecreta[x];
+				contador++;
 				
 			}  else {
 				
