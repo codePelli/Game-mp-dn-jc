@@ -5,14 +5,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Mastermind.Game.Controlador;
-import Mastermind.Game.Juego;
-import Mastermind.Game.MainApp;
 
 import javax.swing.JButton;
 
@@ -116,7 +112,7 @@ public class MasterMind extends JFrame {
 					//Dejamos visible solo la primera linea de de intentos y de resultados
 					if(x < intentos.length - 1) {
 						for (int k = 0; k < intentos[x+1].length; k++) {
-
+							intentos[x][k].setEnabled(false);
 							intentos[x+1][k].setVisible(true);
 							resultado[x+1][k].setVisible(true);
 
