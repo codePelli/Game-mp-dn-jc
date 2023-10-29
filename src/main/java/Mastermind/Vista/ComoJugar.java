@@ -26,7 +26,7 @@ public class ComoJugar extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ComoJugar() {
+	public ComoJugar(MasterMind mastermind) {
 		
 		setTitle("Como Jugar");
 		
@@ -52,7 +52,8 @@ public class ComoJugar extends JFrame {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 
-				 setVisible(false);
+				mastermind.setVisible(true); 
+				setVisible(false);
 
 
 			}

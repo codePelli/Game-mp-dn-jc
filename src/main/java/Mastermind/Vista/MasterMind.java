@@ -73,14 +73,13 @@ public class MasterMind extends JFrame {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 
-				 setVisible(false);
-	             new ComoJugar().setVisible(true);
+				controlador.ComoJugar();
+				setVisible(false);
 
 			}
 		});
-		contentPane.add(btnAyuda);
 		
-
+		contentPane.add(btnAyuda);
 		
 		JLabel lblCombinaciones = new JLabel("Combinaciones");
 		lblCombinaciones.setHorizontalAlignment(SwingConstants.CENTER);

@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+import Mastermind.Vista.ComoJugar;
 import Mastermind.Vista.MasterMind;
 import Mastermind.Vista.SeleccionarNivel;
 
@@ -72,6 +73,12 @@ public class Controlador implements ActionListener {
 	}
 	public void pintarBotonesResultado(JButton[] botones) {
 		juego.pintarBoton(botones,"Resultado");
+	}
+	
+	public void ComoJugar() {
+		
+        new ComoJugar(mastermind).setVisible(true);
+
 	}
 	
 }
