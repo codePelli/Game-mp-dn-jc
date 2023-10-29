@@ -11,6 +11,9 @@ import java.awt.event.ActionListener;
 import Mastermind.Game.Controlador;
 
 import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class MasterMind extends JFrame {
 
@@ -26,24 +29,74 @@ public class MasterMind extends JFrame {
 		this.controlador = controlador;
 		setTitle("Master Mind Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 400);
+		setBounds(100, 100, 732, 356);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		JLabel lbldispo = new JLabel("Colores disponibles");
-		lbldispo.setBounds(512, 46, 221, 14);
+		lbldispo.setHorizontalAlignment(SwingConstants.CENTER);
+		lbldispo.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
+		lbldispo.setForeground(Color.WHITE);
+		lbldispo.setBounds(427, 60, 221, 33);
 		contentPane.add(lbldispo);
 
-		JLabel lbldispo_1 = new JLabel("Combinacion cecreta");
-		lbldispo_1.setBounds(512, 178, 221, 14);
-		contentPane.add(lbldispo_1);
+		JLabel lblcombSecreta = new JLabel("Combinacion secreta");
+		lblcombSecreta.setHorizontalAlignment(SwingConstants.CENTER);
+		lblcombSecreta.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
+		lblcombSecreta.setForeground(Color.WHITE);
+		lblcombSecreta.setBounds(427, 158, 221, 33);
+		contentPane.add(lblcombSecreta);
 
-		JButton btnAtras = new JButton("Atras");
-		btnAtras.setBounds(512, 285, 89, 23);
+		JButton btnAtras = new JButton("Reiniciar");
+		btnAtras.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
+		btnAtras.setForeground(Color.WHITE);
+		btnAtras.setBounds(427, 273, 122, 33);
+		btnAtras.setOpaque(false);
+		btnAtras.setContentAreaFilled(false);
+		btnAtras.setBorderPainted(false);
 		contentPane.add(btnAtras);
+		
+		JButton btnAyuda = new JButton("Como Jugar");
+		btnAyuda.setHorizontalAlignment(SwingConstants.LEFT);
+		btnAyuda.setOpaque(false);
+		btnAyuda.setForeground(Color.WHITE);
+		btnAyuda.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
+		btnAyuda.setContentAreaFilled(false);
+		btnAyuda.setBorderPainted(false);
+		btnAyuda.setBounds(570, 273, 156, 33);
+		btnAyuda.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+
+				 setVisible(false);
+	             new ComoJugar().setVisible(true);
+
+			}
+		});
+		contentPane.add(btnAyuda);
+		
+
+		
+		JLabel lblCombinaciones = new JLabel("Combinaciones");
+		lblCombinaciones.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCombinaciones.setForeground(Color.WHITE);
+		lblCombinaciones.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
+		lblCombinaciones.setBounds(47, 11, 137, 33);
+		contentPane.add(lblCombinaciones);
+		
+		JLabel lblPista = new JLabel("Pista");
+		lblPista.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPista.setForeground(Color.WHITE);
+		lblPista.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
+		lblPista.setBounds(301, 11, 106, 33);
+		contentPane.add(lblPista);
+		
+		
 
 		crearBotonesIntentos();
 
@@ -57,7 +110,7 @@ public class MasterMind extends JFrame {
 
 			}
 		});
-
+		
 
 		crearBotonesColoresDisponibles();
 		crearBotonesCombinacionSecreta();
@@ -68,11 +121,12 @@ public class MasterMind extends JFrame {
 
 		JButton[][] intentos = new JButton[controlador.intentos()][4];
 		JButton[] comprobar = new JButton[controlador.intentos()];
-		int y = 15;
+		int y = 50;
 		for(int i = 0; i < intentos.length; i++) {
 			int x = 55;
 			for (int j = 0; j < intentos[i].length; j++) {
 				JButton btn = new JButton("");
+				btn.setBackground(Color.DARK_GRAY);
 				btn.setBounds(x, y, 25, 25);
 				intentos[i][j] = btn;
 				contentPane.add(intentos[i][j]);
@@ -87,8 +141,14 @@ public class MasterMind extends JFrame {
 				});
 			}
 			JButton botonComprobar = new JButton("Comprobar");
-
+			botonComprobar.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 12));
+			botonComprobar.setForeground(Color.WHITE);
+			botonComprobar.setBounds(512, 269, 122, 33);
+			botonComprobar.setOpaque(false);
+			botonComprobar.setContentAreaFilled(false);
+		//	botonComprobar.setBorderPainted(false);
 			botonComprobar.setActionCommand(i+"");
+			
 			if (i != 0) {
 
 				botonComprobar.setVisible(false);
@@ -132,8 +192,8 @@ public class MasterMind extends JFrame {
 	public void crearBotonesColoresDisponibles() 
 	{
 		JButton[] dispo = new JButton[controlador.getContadorDisponibles()];
-		int y = 65;
-		int x = 513;
+		int y = 100;
+		int x = 460;
 		for(int i = 0; i < dispo.length; i++) 
 		{
 			JButton btn = new JButton("");
@@ -153,7 +213,7 @@ public class MasterMind extends JFrame {
 		JButton[] secret = new JButton[4];
 
 		int y = 200;
-		int x = 513;
+		int x = 460;
 		for(int i = 0; i < secret.length; i++) 
 		{
 			JButton btn = new JButton("");
@@ -177,7 +237,7 @@ public class MasterMind extends JFrame {
 		resultado = new JButton[controlador.intentos()][4];
 
 
-		int y = 15;
+		int y = 50;
 		for(int i = 0; i < resultado.length; i++) 
 		{
 			int x = 300;
@@ -186,6 +246,7 @@ public class MasterMind extends JFrame {
 
 				JButton btn = new JButton("");
 				btn.setBounds(x, y, 25, 25);
+				btn.setBackground(Color.DARK_GRAY);
 				resultado[i][j] = btn;
 				contentPane.add(resultado[i][j]);
 				x = x + 30;
