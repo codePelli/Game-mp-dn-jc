@@ -44,21 +44,21 @@ public class MasterMind extends JFrame {
 		lbldispo.setBounds(427, 60, 221, 33);
 		contentPane.add(lbldispo);
 
-		JLabel lblcombSecreta = new JLabel("Combinacion secreta");
+		JLabel lblcombSecreta = new JLabel("Combinación secreta");
 		lblcombSecreta.setHorizontalAlignment(SwingConstants.CENTER);
 		lblcombSecreta.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
 		lblcombSecreta.setForeground(Color.WHITE);
 		lblcombSecreta.setBounds(427, 158, 221, 33);
 		contentPane.add(lblcombSecreta);
 
-		JButton btnAtras = new JButton("Reiniciar");
-		btnAtras.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
-		btnAtras.setForeground(Color.WHITE);
-		btnAtras.setBounds(427, 273, 122, 33);
-		btnAtras.setOpaque(false);
-		btnAtras.setContentAreaFilled(false);
-		btnAtras.setBorderPainted(false);
-		contentPane.add(btnAtras);
+		JButton btnReiniciar = new JButton("Reiniciar");
+		btnReiniciar.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
+		btnReiniciar.setForeground(Color.WHITE);
+		btnReiniciar.setBounds(427, 273, 122, 33);
+		btnReiniciar.setOpaque(false);
+		btnReiniciar.setContentAreaFilled(false);
+		btnReiniciar.setBorderPainted(false);
+		contentPane.add(btnReiniciar);
 		
 		JButton btnAyuda = new JButton("Como Jugar");
 		btnAyuda.setHorizontalAlignment(SwingConstants.LEFT);
@@ -95,12 +95,18 @@ public class MasterMind extends JFrame {
 		lblPista.setBounds(301, 11, 106, 33);
 		contentPane.add(lblPista);
 		
+		JLabel lblNewLabel = new JLabel(" v1.0");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setBounds(690, 303, 26, 14);
+		contentPane.add(lblNewLabel);
+		
 		
 
 		crearBotonesIntentos();
 
 		//Acepta el nivel de dificultad 
-		btnAtras.addActionListener(new ActionListener() 
+		btnReiniciar.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{

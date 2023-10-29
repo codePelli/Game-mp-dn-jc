@@ -98,6 +98,12 @@ public class SeleccionarNivel extends JFrame {
 		lblNewLabel.setBounds(38, 11, 329, 54);
 		contentPane.add(lblNewLabel);
 		
+		JLabel lblNewLabel_1 = new JLabel(" v1.0");
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblNewLabel_1.setBounds(366, 156, 28, 14);
+		contentPane.add(lblNewLabel_1);
+		
 		//Salir de la aplicacion
 		btnCancelar.addActionListener(new ActionListener() 
 		{

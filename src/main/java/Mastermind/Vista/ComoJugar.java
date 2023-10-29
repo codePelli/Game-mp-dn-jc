@@ -44,6 +44,7 @@ public class ComoJugar extends JFrame {
 		btnAtras.setForeground(Color.WHITE);
 		btnAtras.setBounds(504, 292, 109, 33);
 		btnAtras.setOpaque(false);
+		btnAtras.setBorderPainted(false);
 		btnAtras.setContentAreaFilled(false);
 		contentPane.add(btnAtras);
 		
@@ -59,7 +60,7 @@ public class ComoJugar extends JFrame {
 			}
 		});
 		
-		JLabel lblNewLabel = new JLabel("El objetivo del juego és adivinar la combinación secreta utilizando los colores disponibles mostrados ");
+		JLabel lblNewLabel = new JLabel("El objetivo del juego es adivinar la combinación secreta utilizando los colores disponibles mostrados ");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setBounds(10, 87, 603, 33);
 		contentPane.add(lblNewLabel);
@@ -105,6 +106,12 @@ public class ComoJugar extends JFrame {
 		lblComoJugar.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 50));
 		lblComoJugar.setBounds(134, 11, 350, 76);
 		contentPane.add(lblComoJugar);
+		
+		JLabel lblNewLabel_1 = new JLabel(" v1.0");
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblNewLabel_1.setBounds(594, 322, 28, 14);
+		contentPane.add(lblNewLabel_1);
 
 
 		
