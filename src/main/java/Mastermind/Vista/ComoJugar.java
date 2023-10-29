@@ -103,7 +103,7 @@ public class ComoJugar extends JFrame {
 		lblComoJugar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblComoJugar.setForeground(new Color(204, 255, 153));
 		lblComoJugar.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 50));
-		lblComoJugar.setBounds(134, 22, 329, 54);
+		lblComoJugar.setBounds(134, 11, 350, 76);
 		contentPane.add(lblComoJugar);
 
 

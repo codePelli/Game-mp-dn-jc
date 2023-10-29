@@ -216,6 +216,7 @@ public class MasterMind extends JFrame {
 		for(int i = 0; i < secret.length; i++) 
 		{
 			JButton btn = new JButton("");
+			btn.setBackground(Color.DARK_GRAY);
 			btn.setBounds(x, y, 25, 25);
 			secret[i] = btn;
 			btn.setActionCommand(i+"");
