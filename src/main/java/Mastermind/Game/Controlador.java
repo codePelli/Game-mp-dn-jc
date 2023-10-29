@@ -69,6 +69,7 @@ public class Controlador implements ActionListener {
 		} else if (tirada == 2) {
 			
 			JOptionPane.showMessageDialog(mastermind, "¡Has perdido!");
+			reiniciarJuego();
 		}
 	}
 	public void pintarBotonesResultado(JButton[] botones) {
