@@ -77,38 +77,23 @@ public class Juego {
 		int negros = 0;
 		boolean verificar = false;
 		int blancos = 0;
-		int contador = 0;
-		ArrayList<Integer> negrosAparecidos = new ArrayList<Integer>();
-		ArrayList<Integer> blancosAparecidos = new ArrayList<Integer>();
+		ArrayList<Integer> posicionesAparecidas = new ArrayList<Integer>();
 		//Creamos array para saber que colores han aparecido
 		for (int x = 0; arrayIntento.length > x; x++) {
-
 			if (arrayIntento[x].getBackground() == combinacionSecreta[x]) {
-
 				negros ++;
-				negrosAparecidos.add(x);
-				contador++;
-
+				posicionesAparecidas.add(x);
 			}  
 		}
 		for (int x = 0; x < arrayIntento.length; x++) {
 			if(!(arrayIntento[x].getBackground() == combinacionSecreta[x])){
-				
 				//Bucle for recoge intentos y mira si no son iguales a la combinacion secreta
 				for (int y = 0; arrayIntento.length > y; y++) {
-
 					if (arrayIntento[x].getBackground() == combinacionSecreta[y]) {
 						verificar = true;
-						
 						//Comprueba que la posicion de los negros aparecidos no sea igual a la que se está comprobando
-						for (int i = 0; i < negrosAparecidos.size(); i++) {
-							if(negrosAparecidos.get(i) == y) {
-								verificar = false;
-							}
-						}
-						//Comprueba que la posicion de los blancos aparecidos no sea igual a la que se está comprobando
-						for (int i = 0; i < blancosAparecidos.size(); i++) {
-							if(blancosAparecidos.get(i) == y) {
+						for (int i = 0; i < posicionesAparecidas.size(); i++) {
+							if(posicionesAparecidas.get(i) == y) {
 								verificar = false;
 							}
 						}
@@ -116,11 +101,9 @@ public class Juego {
 					if (verificar) {
 						blancos ++;
 						verificar = false;
-						blancosAparecidos.add(y);
-						contador++;
+						posicionesAparecidas.add(y);
 						//Se iguala a 4 para forzar a acabar el segundo bucle una vez se haya verificado
 						y = 4;
-
 					}
 				}
 			}
