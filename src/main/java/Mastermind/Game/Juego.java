@@ -93,16 +93,20 @@ public class Juego {
 		}
 		for (int x = 0; x < arrayIntento.length; x++) {
 			if(!(arrayIntento[x].getBackground() == combinacionSecreta[x])){
-
+				
+				//Bucle for recoge intentos y mira si no son iguales a la combinacion secreta
 				for (int y = 0; arrayIntento.length > y; y++) {
 
 					if (arrayIntento[x].getBackground() == combinacionSecreta[y]) {
 						verificar = true;
+						
+						//Comprueba que la posicion de los negros aparecidos no sea igual a la que se está comprobando
 						for (int i = 0; i < negrosAparecidos.size(); i++) {
 							if(negrosAparecidos.get(i) == y) {
 								verificar = false;
 							}
 						}
+						//Comprueba que la posicion de los blancos aparecidos no sea igual a la que se está comprobando
 						for (int i = 0; i < blancosAparecidos.size(); i++) {
 							if(blancosAparecidos.get(i) == y) {
 								verificar = false;
@@ -110,6 +114,8 @@ public class Juego {
 						}
 					}
 					if (verificar) {
+						//Se iguala a 4 para forzar a acabar el segundo bucle una vez se haya verificado
+						y = 4; //
 						blancos ++;
 						verificar = false;
 						blancosAparecidos.add(y);
