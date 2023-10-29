@@ -114,12 +114,13 @@ public class Juego {
 						}
 					}
 					if (verificar) {
-						//Se iguala a 4 para forzar a acabar el segundo bucle una vez se haya verificado
-						y = 4; //
 						blancos ++;
 						verificar = false;
 						blancosAparecidos.add(y);
 						contador++;
+						//Se iguala a 4 para forzar a acabar el segundo bucle una vez se haya verificado
+						y = 4;
+
 					}
 				}
 			}
