@@ -32,7 +32,7 @@ public class SeleccionarNivel extends JFrame {
 		setTitle("Selecciona un nivel de dificultad");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 410, 209);
+		setBounds(100, 100, 410, 220);
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.WHITE);
 		contentPane.setBackground(Color.DARK_GRAY);

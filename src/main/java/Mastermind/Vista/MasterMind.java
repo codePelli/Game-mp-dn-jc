@@ -29,7 +29,7 @@ public class MasterMind extends JFrame {
 		this.controlador = controlador;
 		setTitle("Master Mind Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 732, 356);
+		setBounds(100, 100, 732, 400);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
