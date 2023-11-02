@@ -3,6 +3,7 @@ package Mastermind.Vista;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
@@ -151,7 +152,6 @@ public class MasterMind extends JFrame {
 			botonComprobar.setBounds(512, 269, 122, 33);
 			botonComprobar.setOpaque(false);
 			botonComprobar.setContentAreaFilled(false);
-		//	botonComprobar.setBorderPainted(false);
 			botonComprobar.setActionCommand(i+"");
 			
 			if (i != 0) {
@@ -164,29 +164,40 @@ public class MasterMind extends JFrame {
 			y += 30;
 			botonComprobar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					boolean valido = true;
 					//Cogemos el index de la array guardada en el botón
 					int x = Integer.parseInt(botonComprobar.getActionCommand());
-					botonComprobar.setVisible(false);
-					//Dejamos solo visible el primer botón
-					if(x < comprobar.length -1) {
-						comprobar[x + 1].setVisible(true);
-					}
+					
 					JButton[] filaIntentos = intentos[x];
 					JButton[] filaResultado = resultado[x];
-
-					//Dejamos visible solo la primera linea de de intentos y de resultados
-					if(x < intentos.length - 1) {
-						for (int k = 0; k < intentos[x+1].length; k++) {
-							intentos[x][k].setEnabled(false);
-							intentos[x+1][k].setVisible(true);
-							resultado[x+1][k].setVisible(true);
-
+					
+					for (int j = 0; j < filaIntentos.length; j++) {
+						if(Color.DARK_GRAY == filaIntentos[j].getBackground()) {
+							valido = false;	
 						}
 					}
-					//llamamos al controlador para comprobar el intento y para pintar los botones
-					controlador.comprobarIntento(filaIntentos);
-					controlador.pintarBotonesResultado(filaResultado);
+					
+					if(valido) {
+						botonComprobar.setVisible(false);
+						//Dejamos solo visible el primer botón
+						if(x < comprobar.length -1) {
+							comprobar[x + 1].setVisible(true);
+						}
+						//Dejamos visible solo la primera linea de de intentos y de resultados
+						if(x < intentos.length - 1) {
+							for (int k = 0; k < intentos[x+1].length; k++) {
+								intentos[x][k].setEnabled(false);
+								intentos[x+1][k].setVisible(true);
+								resultado[x+1][k].setVisible(true);
 
+							}
+						}
+						//llamamos al controlador para comprobar el intento y para pintar los botones
+						controlador.comprobarIntento(filaIntentos);
+						controlador.pintarBotonesResultado(filaResultado);
+					}else {
+						JOptionPane.showMessageDialog(null, "Tienes que rellenar todos los cuadros");
+					}
 				}
 			});
 

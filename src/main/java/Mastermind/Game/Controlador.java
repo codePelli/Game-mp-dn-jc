@@ -19,7 +19,7 @@ public class Controlador implements ActionListener {
     
     //Método para iniciar y reiniciar el juego
     public void reiniciarJuego() {
-  
+ 
     	seleccionarLevel = new SeleccionarNivel(this);
 		seleccionarLevel.setVisible(true);
 		if(mastermind != null) {
