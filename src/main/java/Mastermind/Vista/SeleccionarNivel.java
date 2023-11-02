@@ -3,6 +3,10 @@ package Mastermind.Vista;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Mastermind.Game.Controlador;
+import Mastermind.Game.MainApp;
+
 import javax.swing.JRadioButton;
 
 import java.awt.event.ActionEvent;
@@ -10,27 +14,28 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.SwingConstants;
+import java.awt.SystemColor;
 
 public class SeleccionarNivel extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-
 	
-
-	/**
-	 * Create the frame.
-	 */
-	public SeleccionarNivel() 
-	{
+	public ButtonGroup bgroup;
+	// Constructor que a raiz de un controlador nos crea una pantalla para seleccionar el novel del juego
+	public SeleccionarNivel(Controlador controlador) {
 		
-		
-		setTitle("Seleccionar nivel");
-		
+		setTitle("Selecciona un nivel de dificultad");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 413, 156);
+		setBounds(100, 100, 410, 220);
 		contentPane = new JPanel();
+		contentPane.setForeground(Color.WHITE);
+		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -38,46 +43,66 @@ public class SeleccionarNivel extends JFrame {
 		
 		//Botones para seleccionar el nivel de dificultad
 		JRadioButton rdbtnprincipante = new JRadioButton("Principiante");
+		rdbtnprincipante.setForeground(Color.WHITE);
+		rdbtnprincipante.setBackground(Color.DARK_GRAY);
+		rdbtnprincipante.setActionCommand("Principiante");
 		rdbtnprincipante.setSelected(true);
-		rdbtnprincipante.setBounds(61, 30, 109, 23);
+		rdbtnprincipante.setBounds(57, 83, 109, 23);
 		contentPane.add(rdbtnprincipante);
 		
 		JRadioButton rdbtnMedio = new JRadioButton("Medio");
-		rdbtnMedio.setBounds(172, 30, 88, 23);
+		rdbtnMedio.setForeground(Color.WHITE);
+		rdbtnMedio.setBackground(Color.DARK_GRAY);
+		rdbtnMedio.setActionCommand("Medio");
+
+		rdbtnMedio.setBounds(168, 83, 88, 23);
 		contentPane.add(rdbtnMedio);
 		
 		JRadioButton rdbtnAvanzado = new JRadioButton("Avanzado");
-		rdbtnAvanzado.setBounds(262, 30, 109, 23);
+		rdbtnAvanzado.setForeground(Color.WHITE);
+		rdbtnAvanzado.setBackground(Color.DARK_GRAY);
+		rdbtnAvanzado.setActionCommand("Avanzado");
+		rdbtnAvanzado.setBounds(258, 83, 109, 23);
 		contentPane.add(rdbtnAvanzado);
 		
 		//Agrupamos las 3 opciones
-		ButtonGroup bgroup = new ButtonGroup();
+		bgroup = new ButtonGroup();
 		bgroup.add(rdbtnprincipante);
 		bgroup.add(rdbtnMedio);
 		bgroup.add(rdbtnAvanzado);
 		
-		
-		
 		JButton btnAceptar = new JButton("Aceptar");
-		btnAceptar.setBounds(103, 71, 88, 23);
+		btnAceptar.setForeground(Color.WHITE);		
+		btnAceptar.setOpaque(false);
+		btnAceptar.setContentAreaFilled(false);
+		btnAceptar.setBorderPainted(false);
+		
+		btnAceptar.setBounds(100, 123, 88, 23);
 		contentPane.add(btnAceptar);
 		
-		//Acepta el nivel de dificultad 
-		btnAceptar.addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent arg0) 
-			{
-				
-				 setVisible(false);
-				 MasterMind game = new MasterMind(); 
-	             game.setVisible(true); 
-	             
-			}
-		});
+		//Acepta el nivel de dificultad desde action listener del controlador
+		btnAceptar.addActionListener(controlador);
 		
 		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(217, 71, 88, 23);
+		btnCancelar.setForeground(Color.WHITE);
+		btnCancelar.setOpaque(false);
+		btnCancelar.setContentAreaFilled(false);
+		btnCancelar.setBorderPainted(false);
+		btnCancelar.setBounds(214, 123, 88, 23);
 		contentPane.add(btnCancelar);
+		
+		JLabel lblNewLabel = new JLabel("Master Mind");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setForeground(new Color(204, 255, 153));
+		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 50));
+		lblNewLabel.setBounds(38, 11, 329, 54);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel(" v1.0");
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblNewLabel_1.setBounds(366, 156, 28, 14);
+		contentPane.add(lblNewLabel_1);
 		
 		//Salir de la aplicacion
 		btnCancelar.addActionListener(new ActionListener() 

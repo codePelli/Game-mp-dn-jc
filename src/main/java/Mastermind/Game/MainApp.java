@@ -1,13 +1,15 @@
 package Mastermind.Game;
+import Mastermind.Vista.MasterMind;
+import Mastermind.Vista.SeleccionarNivel;
 
-/**
- * Hello world!
- *
- */
 public class MainApp 
 {
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+    
+    public static void main( String[] args ){
+
+    	Controlador controlador = new Controlador();
+    	controlador.reiniciarJuego();
     }
+    
+
 }

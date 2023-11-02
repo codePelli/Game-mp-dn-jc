@@ -3,232 +3,276 @@ package Mastermind.Vista;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Mastermind.Game.Controlador;
+
 import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class MasterMind extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
+	private String dificultad;
+	private Controlador controlador;
+	JButton[][] resultado;
+	//Creamos constructor a raiz de un controlador
+	public MasterMind(Controlador controlador) {
 
-	/**
-	 * Create the frame.
-	 */
-	public MasterMind() 
-	{
-		
+		this.controlador = controlador;
 		setTitle("Master Mind Game");
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 800, 400);
+		setBounds(100, 100, 732, 400);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lbldispo = new JLabel("Colores disponibles");
-		lbldispo.setBounds(512, 46, 221, 14);
+		lbldispo.setHorizontalAlignment(SwingConstants.CENTER);
+		lbldispo.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
+		lbldispo.setForeground(Color.WHITE);
+		lbldispo.setBounds(427, 60, 221, 33);
 		contentPane.add(lbldispo);
+
+		JLabel lblcombSecreta = new JLabel("Combinación secreta");
+		lblcombSecreta.setHorizontalAlignment(SwingConstants.CENTER);
+		lblcombSecreta.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
+		lblcombSecreta.setForeground(Color.WHITE);
+		lblcombSecreta.setBounds(427, 158, 221, 33);
+		contentPane.add(lblcombSecreta);
+
+		JButton btnReiniciar = new JButton("Reiniciar");
+		btnReiniciar.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
+		btnReiniciar.setForeground(Color.WHITE);
+		btnReiniciar.setBounds(427, 273, 122, 33);
+		btnReiniciar.setOpaque(false);
+		btnReiniciar.setContentAreaFilled(false);
+		btnReiniciar.setBorderPainted(false);
+		contentPane.add(btnReiniciar);
 		
-		JLabel lbldispo_1 = new JLabel("Combinacion cecreta");
-		lbldispo_1.setBounds(512, 178, 221, 14);
-		contentPane.add(lbldispo_1);
-		
-		JButton btnComprobarIntentos = new JButton("Comprobar");
-		btnComprobarIntentos.setBounds(188, 285, 115, 23);
-		contentPane.add(btnComprobarIntentos);
-		
-		JButton btnAtras = new JButton("Atras");
-		btnAtras.setBounds(512, 285, 89, 23);
-		contentPane.add(btnAtras);
-		
-		//Acepta el nivel de dificultad 
-		btnAtras.addActionListener(new ActionListener() 
+		JButton btnAyuda = new JButton("Como Jugar");
+		btnAyuda.setHorizontalAlignment(SwingConstants.LEFT);
+		btnAyuda.setOpaque(false);
+		btnAyuda.setForeground(Color.WHITE);
+		btnAyuda.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
+		btnAyuda.setContentAreaFilled(false);
+		btnAyuda.setBorderPainted(false);
+		btnAyuda.setBounds(570, 273, 156, 33);
+		btnAyuda.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-						
+
+				controlador.ComoJugar();
 				setVisible(false);
-				SeleccionarNivel niveles = new SeleccionarNivel(); 
-			    niveles.setVisible(true); 
-			             
+
 			}
 		});
 		
+		contentPane.add(btnAyuda);
 		
-		JButton btn1ColorIntento = new JButton("");
-		btn1ColorIntento.setBounds(56, 285, 23, 23);
-		contentPane.add(btn1ColorIntento);
+		JLabel lblCombinaciones = new JLabel("Combinaciones");
+		lblCombinaciones.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCombinaciones.setForeground(Color.WHITE);
+		lblCombinaciones.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
+		lblCombinaciones.setBounds(47, 11, 137, 33);
+		contentPane.add(lblCombinaciones);
 		
-		JButton btn2ColorIntento = new JButton("");
-		btn2ColorIntento.setBounds(89, 285, 23, 23);
-		contentPane.add(btn2ColorIntento);
+		JLabel lblPista = new JLabel("Pista");
+		lblPista.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPista.setForeground(Color.WHITE);
+		lblPista.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 20));
+		lblPista.setBounds(301, 11, 106, 33);
+		contentPane.add(lblPista);
 		
-		JButton btn3ColorIntento = new JButton("");
-		btn3ColorIntento.setBounds(122, 285, 23, 23);
-		contentPane.add(btn3ColorIntento);
-		
-		JButton btn4ColorIntento = new JButton("");
-		btn4ColorIntento.setBounds(155, 285, 23, 23);
-		contentPane.add(btn4ColorIntento);
-		
-		JButton btn1Dispo = new JButton("");
-		btn1Dispo.setBounds(512, 71, 23, 23);
-		contentPane.add(btn1Dispo);
-		
-		JButton btn2Dispo = new JButton("");
-		btn2Dispo.setBounds(545, 71, 23, 23);
-		contentPane.add(btn2Dispo);
-		
-		JButton btn3Dispo = new JButton("");
-		btn3Dispo.setBounds(578, 71, 23, 23);
-		contentPane.add(btn3Dispo);
-		
-		JButton btn4Dispo = new JButton("");
-		btn4Dispo.setBounds(611, 71, 23, 23);
-		contentPane.add(btn4Dispo);
-		
-		JButton btn5Dispo = new JButton("");
-		btn5Dispo.setBounds(644, 71, 23, 23);
-		contentPane.add(btn5Dispo);
-		
-		JButton btn6Dispo = new JButton("");
-		btn6Dispo.setBounds(677, 71, 23, 23);
-		contentPane.add(btn6Dispo);
-		
-		JButton btn1CombinacionSecreta = new JButton("");
-		btn1CombinacionSecreta.setBounds(512, 203, 23, 23);
-		contentPane.add(btn1CombinacionSecreta);
-		
-		btn1CombinacionSecreta.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Generar un color aleatorio
-                Color randomColor1 = new Color((int) (Math.random() * 0x1000000));
-                btn1CombinacionSecreta.setBackground(randomColor1); // Establecer el color de fondo del botón
-            }
-        });
+		JLabel lblNewLabel = new JLabel(" v1.0");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setBounds(690, 303, 26, 14);
+		contentPane.add(lblNewLabel);
 		
 		
-		JButton btn2CombinacionSecreta = new JButton("");
-		btn2CombinacionSecreta.setBounds(545, 203, 23, 23);
-		contentPane.add(btn2CombinacionSecreta);
-		btn2CombinacionSecreta.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Generar un color aleatorio
-                Color randomColor2 = new Color((int) (Math.random() * 0x1000000));
-                btn2CombinacionSecreta.setBackground(randomColor2); // Establecer el color de fondo del botón
-            }
-        });
+
+		crearBotonesIntentos();
+
+		//Acepta el nivel de dificultad 
+		btnReiniciar.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+
+				controlador.reiniciarJuego();
+
+			}
+		});
 		
-		JButton btn3CombinacionSecreta = new JButton("");
-		btn3CombinacionSecreta.setBounds(578, 203, 23, 23);
-		contentPane.add(btn3CombinacionSecreta);
-		btn3CombinacionSecreta.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Generar un color aleatorio
-                Color randomColor3 = new Color((int) (Math.random() * 0x1000000));
-                btn3CombinacionSecreta.setBackground(randomColor3); // Establecer el color de fondo del botón
-            }
-        });
-		
-		JButton btn4CombinacionSecreta = new JButton("");
-		btn4CombinacionSecreta.setBounds(611, 203, 23, 23);
-		contentPane.add(btn4CombinacionSecreta);
-		
-		JButton btn1ColorIntento_1 = new JButton("");
-		btn1ColorIntento_1.setBounds(56, 251, 23, 23);
-		contentPane.add(btn1ColorIntento_1);
-		
-		JButton btn2ColorIntento_1 = new JButton("");
-		btn2ColorIntento_1.setBounds(89, 251, 23, 23);
-		contentPane.add(btn2ColorIntento_1);
-		
-		JButton btn3ColorIntento_1 = new JButton("");
-		btn3ColorIntento_1.setBounds(122, 251, 23, 23);
-		contentPane.add(btn3ColorIntento_1);
-		
-		JButton btn4ColorIntento_1 = new JButton("");
-		btn4ColorIntento_1.setBounds(155, 251, 23, 23);
-		contentPane.add(btn4ColorIntento_1);
-		
-		JButton btn1ColorIntento_2 = new JButton("");
-		btn1ColorIntento_2.setBounds(56, 217, 23, 23);
-		contentPane.add(btn1ColorIntento_2);
-		
-		JButton btn2ColorIntento_2 = new JButton("");
-		btn2ColorIntento_2.setBounds(89, 217, 23, 23);
-		contentPane.add(btn2ColorIntento_2);
-		
-		JButton btn3ColorIntento_2 = new JButton("");
-		btn3ColorIntento_2.setBounds(122, 217, 23, 23);
-		contentPane.add(btn3ColorIntento_2);
-		
-		JButton btn4ColorIntento_2 = new JButton("");
-		btn4ColorIntento_2.setBounds(155, 217, 23, 23);
-		contentPane.add(btn4ColorIntento_2);
-		
-		JButton btn1ColorIntento_3 = new JButton("");
-		btn1ColorIntento_3.setBounds(56, 183, 23, 23);
-		contentPane.add(btn1ColorIntento_3);
-		
-		JButton btn2ColorIntento_3 = new JButton("");
-		btn2ColorIntento_3.setBounds(89, 183, 23, 23);
-		contentPane.add(btn2ColorIntento_3);
-		
-		JButton btn3ColorIntento_3 = new JButton("");
-		btn3ColorIntento_3.setBounds(122, 183, 23, 23);
-		contentPane.add(btn3ColorIntento_3);
-		
-		JButton btn4ColorIntento_3 = new JButton("");
-		btn4ColorIntento_3.setBounds(155, 183, 23, 23);
-		contentPane.add(btn4ColorIntento_3);
-		
-		JButton btn1ColorIntento_4 = new JButton("");
-		btn1ColorIntento_4.setBounds(56, 149, 23, 23);
-		contentPane.add(btn1ColorIntento_4);
-		
-		JButton btn2ColorIntento_4 = new JButton("");
-		btn2ColorIntento_4.setBounds(89, 149, 23, 23);
-		contentPane.add(btn2ColorIntento_4);
-		
-		JButton btn3ColorIntento_4 = new JButton("");
-		btn3ColorIntento_4.setBounds(122, 149, 23, 23);
-		contentPane.add(btn3ColorIntento_4);
-		
-		JButton btn4ColorIntento_4 = new JButton("");
-		btn4ColorIntento_4.setBounds(155, 149, 23, 23);
-		contentPane.add(btn4ColorIntento_4);
-		
-		JButton btn1ColorIntento_5 = new JButton("");
-		btn1ColorIntento_5.setBounds(56, 115, 23, 23);
-		contentPane.add(btn1ColorIntento_5);
-		
-		JButton btn2ColorIntento_5 = new JButton("");
-		btn2ColorIntento_5.setBounds(89, 115, 23, 23);
-		contentPane.add(btn2ColorIntento_5);
-		
-		JButton btn3ColorIntento_5 = new JButton("");
-		btn3ColorIntento_5.setBounds(122, 115, 23, 23);
-		contentPane.add(btn3ColorIntento_5);
-		
-		JButton btn4ColorIntento_5 = new JButton("");
-		btn4ColorIntento_5.setBounds(155, 115, 23, 23);
-		contentPane.add(btn4ColorIntento_5);
-		btn4CombinacionSecreta.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Generar un color aleatorio
-                Color randomColor4 = new Color((int) (Math.random() * 0x1000000));
-                btn4CombinacionSecreta.setBackground(randomColor4); // Establecer el color de fondo del botón
-            }
-        });
-		
+
+		crearBotonesColoresDisponibles();
+		crearBotonesCombinacionSecreta();
+		crearBotonesResultado();
+	}
+	//Metodo para crear los botones de intentos
+	public void crearBotonesIntentos() {
+
+		JButton[][] intentos = new JButton[controlador.intentos()][4];
+		JButton[] comprobar = new JButton[controlador.intentos()];
+		int y = 50;
+		for(int i = 0; i < intentos.length; i++) {
+			int x = 55;
+			for (int j = 0; j < intentos[i].length; j++) {
+				JButton btn = new JButton("");
+				btn.setBackground(Color.DARK_GRAY);
+				btn.setBounds(x, y, 25, 25);
+				intentos[i][j] = btn;
+				contentPane.add(intentos[i][j]);
+				x = x + 30;
+				if(i > 0) {
+					btn.setVisible(false);
+				}
+				btn.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						controlador.pintarBotonIntento(btn);
+					}
+				});
+			}
+			JButton botonComprobar = new JButton("Comprobar");
+			botonComprobar.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 12));
+			botonComprobar.setForeground(Color.WHITE);
+			botonComprobar.setBounds(512, 269, 122, 33);
+			botonComprobar.setOpaque(false);
+			botonComprobar.setContentAreaFilled(false);
+			botonComprobar.setActionCommand(i+"");
+			
+			if (i != 0) {
+
+				botonComprobar.setVisible(false);
+			}
+			botonComprobar.setBounds(175, y, 115, 25);
+			comprobar[i] = botonComprobar;
+			contentPane.add(comprobar[i]);
+			y += 30;
+			botonComprobar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					boolean valido = true;
+					//Cogemos el index de la array guardada en el botón
+					int x = Integer.parseInt(botonComprobar.getActionCommand());
+					
+					JButton[] filaIntentos = intentos[x];
+					JButton[] filaResultado = resultado[x];
+					
+					for (int j = 0; j < filaIntentos.length; j++) {
+						if(Color.DARK_GRAY == filaIntentos[j].getBackground()) {
+							valido = false;	
+						}
+					}
+					
+					if(valido) {
+						botonComprobar.setVisible(false);
+						//Dejamos solo visible el primer botón
+						if(x < comprobar.length -1) {
+							comprobar[x + 1].setVisible(true);
+						}
+						//Dejamos visible solo la primera linea de de intentos y de resultados
+						if(x < intentos.length - 1) {
+							for (int k = 0; k < intentos[x+1].length; k++) {
+								intentos[x][k].setEnabled(false);
+								intentos[x+1][k].setVisible(true);
+								resultado[x+1][k].setVisible(true);
+
+							}
+						}
+						//llamamos al controlador para comprobar el intento y para pintar los botones
+						controlador.comprobarIntento(filaIntentos);
+						controlador.pintarBotonesResultado(filaResultado);
+					}else {
+						JOptionPane.showMessageDialog(null, "Tienes que rellenar todos los cuadros");
+					}
+				}
+			});
+
+		}
+
+	}
+
+	public void crearBotonesColoresDisponibles() 
+	{
+		JButton[] dispo = new JButton[controlador.getContadorDisponibles()];
+		int y = 100;
+		int x = 460;
+		for(int i = 0; i < dispo.length; i++) 
+		{
+			JButton btn = new JButton("");
+			btn.setBounds(x, y, 25, 25);
+			dispo[i] = btn;
+			contentPane.add(dispo[i]);
+			x = x + 30;
+
+
+		}
+		// pinta los colores disponibles
+		controlador.getColoresDisponibles(dispo, "Disponibles");
+	}
+
+	public void crearBotonesCombinacionSecreta() 
+	{
+		JButton[] secret = new JButton[4];
+
+		int y = 200;
+		int x = 460;
+		for(int i = 0; i < secret.length; i++) 
+		{
+			JButton btn = new JButton("");
+			btn.setBackground(Color.DARK_GRAY);
+			btn.setBounds(x, y, 25, 25);
+			secret[i] = btn;
+			btn.setActionCommand(i+"");
+			contentPane.add(secret[i]);
+			x = x + 30;
+
+			btn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					controlador.getColorSecreta(btn, e.getActionCommand());
+				}
+			});
+
+		}
+	}
+	public void crearBotonesResultado() 
+	{
+
+		resultado = new JButton[controlador.intentos()][4];
+
+
+		int y = 50;
+		for(int i = 0; i < resultado.length; i++) 
+		{
+			int x = 300;
+			for (int j = 0; j < resultado[i].length; j++) 
+			{
+
+				JButton btn = new JButton("");
+				btn.setBounds(x, y, 25, 25);
+				btn.setBackground(Color.DARK_GRAY);
+				resultado[i][j] = btn;
+				contentPane.add(resultado[i][j]);
+				x = x + 30;
+				if(i > 0) {
+					btn.setVisible(false);
+				}
+
+			}
+			y += 30;
+		}
 	}
 }
